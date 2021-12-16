@@ -1,0 +1,235 @@
+#main-wrapper{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+
+/** sidebar **/
+#sidebar {
+	transition: width .28s;
+	width: 275px !important;
+	background-color: #304156;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	transition: 0.8s;
+}
+.main-wrapper.opensidebar #sidebar{
+	left: -275px;
+}
+.profile-wrapper {
+	display: flex;
+	flex-flow: row wrap;
+	align-content: center;
+	align-items: center;
+	padding: 20px 15px;
+	border-bottom: 1px solid #ccc;
+}
+
+.profile-image {
+	width: 20%;
+	display: flex;
+	align-items: center;
+}
+.profile-image img {
+	width: 70%;
+}
+.profile-name {
+	width: 70%;
+}
+.profile-name h1 {
+	font-size: 18px;
+	color: var(--white);
+}
+.parent-navigation {
+	overflow-y: auto;
+}
+.parent-navigation .navigation-item {
+	line-height: 55px;
+}
+.parent-navigation .navigation-item:hover{
+	background:var(--sidebarhover);
+}
+.parent-navigation .navigation-item .navigation-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0px 15px;
+
+}
+.navigation-item.has-children .navigation-dropdown {
+	background:var(--sidebarhover);
+	padding-left: 30px;
+}
+.has-children .navigation-dropdown{
+	display: none;
+}
+.parent-navigation .navigation-item .navigation-wrapper .nav-icon{
+	font-size: 18px;
+	color: var(--sidebariconColor);
+	width: 15%;
+}
+.parent-navigation .navigation-item .navigation-wrapper .navigation-link {
+	font-size: 18px;
+	color: var(--white);
+	display: block;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+.navigation-wrapper .navigation-link .drop-down-chervon{
+	margin-left: auto;
+	font-size: 13px;
+	color: var(--sidebariconColor);
+	transition: 0.8s;
+}
+
+/** end of sidebar **/
+/** top header css **/
+.top-header {
+	background: #fff;
+	box-shadow: 0 1px 4px rgba(0,21,41,.08);
+	line-height: 55px;
+	padding: 0px 20px;
+}
+.top-header .row-wrapper {
+	align-items: center;
+}
+.top-action-list {
+	margin-left: auto;
+}
+.top-action-items li a {
+	display: flex;
+	align-items: center;
+}
+.top-action-items li{
+	position: relative;
+}
+.top-action-items li .top-nav-dropdown{
+	display: none;
+	position: absolute;
+	background: var(--white);
+	width: 150px;
+	right: 0;
+	top: 41px;
+	box-shadow: 0 0 5px 0 rgba(0,0,0,0.3);
+	z-index: 11;
+}
+.top-action-items li a i{
+	font-size: 18px;
+	color:var(--black);
+	margin-left: 10px;
+}
+.admin-nav-list li{
+	padding: 0px 5px;
+}
+.admin-nav-list li a {
+	font-size: 16px;
+	coloe: ;
+	color: var(--titleColor);
+	line-height: 40px;
+}
+.admin-nav-list li a i{
+	margin-right: 10px;
+	font-size: 16px;
+	color: var(--titleColor);
+}
+.sidenav-bar button {
+	background: none;
+	border: 0;
+	font-size: 18px;
+	color: var(--titleColor);
+}
+/** end of top header css **/
+/** content body css **/
+.content-body {
+	 min-height: 100%;
+	-webkit-transition: margin-left .28s;
+	transition: margin-left .28s;
+	margin-left: 275px;
+	position: relative;
+	transition: 0.8s;
+}
+.main-wrapper.opensidebar .content-body{
+	margin-left: 0px;
+}
+/** end of content body css **/
+
+/** page title wrapper **/
+
+.page-title-wrapper {
+	padding: 30px;
+	display: flex;
+	align-items: center;
+}
+.page-directory {
+	margin-left: auto;
+}
+.page-directory {
+	display: flex;
+	align-items: center;
+}
+.page-directory li{
+	position: relative;
+	margin-left: 20px;
+	font-size: 22px;
+	color: var(--titleColor);
+}
+.page-directory li:before{
+	position: absolute;
+	content: '/';
+	right:-12px;
+	top: 0px;
+
+
+}
+.page-directory li:last-child::before{
+	display: none;
+}
+.page-title-wrapper .current-page {
+	font-size: 24px;
+	color: var(--themecolor);
+}
+
+/** end of page title **/
+/** maincontent wrapper **/
+.main-content-wrapper {
+	padding: 0px 30px;
+}
+.main-content-wrapper-bg {
+	background: #fff;
+	padding: 30px;
+}
+/** end of maincontent wrapper **/
+
+/** list page css **/
+.list-header-section {
+	display: flex;
+	align-items: center;
+}
+.list-header-section  .action-button{
+	margin-left: auto;
+}
+.search-box input {
+	line-height: 40px;
+	width: 250px;
+	text-align: ;
+	text-indent: 15px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid var(--sidebariconColor);
+	color: var(--sidebariconColor);
+}
+.action-button .action-create-button {
+	padding: 10px 20px;
+	background: var(--successButton);
+	border: 0px;
+	color: var(--white);
+	font-size: 17px;
+	border-radius: 4px;
+}
+/** end of list page css **/

@@ -1,0 +1,60 @@
+html{
+	overflow-x: hidden;
+	margin: 0px;
+	padding: 0px;
+
+}
+body{
+	overflow-x: :hidden;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Source Sans 3';
+	background: var(--bodyBg);
+}
+h1,h2,h3,h4,h5,h6{
+	margin: 0px;
+	font-family: 'Roboto';
+	font-weight:700;
+}
+button{
+	font-family: 'Roboto';
+	font-size: 16px;
+}
+ul{
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+}
+a{
+	display: inline-block;
+	text-decoration: none;
+}
+span,strong{
+	display: inline-block;
+}
+p{
+	margin: 0px;
+}
+:root {
+	--bodyBg: #f2f7fb;
+  --black: #000;
+  --white: #fff;
+  --sidebariconColor: rgb(191, 203, 217);
+  --sidebarhover: #263445 ;
+  --themecolor:rgb(48, 65, 86);
+  --primaryButton: #1890ff;
+  --dangerButton: #ff4949;
+  --warningButton: #ffba00;
+  --successButton: #13ce66;
+  --titleColor: #606266;
+
+}
+
+.row-wrapper{
+	display: flex;
+	flex-flow: row wrap;
+}
+.sm-img{
+	height: 25px;
+}
+
