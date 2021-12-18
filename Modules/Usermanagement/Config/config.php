@@ -14,5 +14,10 @@ return [
         'index'=>'Role',
         'create'=>'Create Role',
         'update'=>'Update Role'
+    ],
+    'middleware'=>[
+        'admin' => [
+            1 => 'admin.permission',
+        ],
     ]
 ];

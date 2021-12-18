@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('admin')->name('admin.')->group(function() {
+Route::prefix('admin')->name('admin.')->middleware(config('dashboard.BACKEND_MIDDLEWARE'))->group(function() {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 });

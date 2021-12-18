@@ -11,7 +11,13 @@
 |
 */
 
-Route::prefix('admin')->name('admin.')->group(function() {
+
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('login','AuthController@login')->name('login');
+    Route::post('login','AuthController@loginProcess')->name('loginProcess');
+    Route::get('logout','AuthController@logout')->name('logout');
+});
+Route::prefix('admin')->name('admin.')->middleware(config('dashboard.BACKEND_MIDDLEWARE'))->group(function() {
     Route::group(['prefix'=>'permission'],function(){
         Route::get('/','PermissionController@index')->name('permission');
     });

@@ -41,7 +41,7 @@ class UsermanagementServiceProvider extends ServiceProvider
             require module_path('Usermanagement') . '\Helper\UsermanagementHelper.php';
         }
         $this->app->register(RouteServiceProvider::class);
-
+        $this->app->register(PermissionServiceProvider::class);
     }
 
     /**
