@@ -175,14 +175,14 @@
 }
 .page-directory li{
 	position: relative;
-	margin-left: 20px;
+	margin-left: 31px;
 	font-size: 22px;
 	color: var(--titleColor);
 }
 .page-directory li:before{
 	position: absolute;
 	content: '/';
-	right:-12px;
+	right:-18px;
 	top: 0px;
 
 
@@ -207,29 +207,74 @@
 /** end of maincontent wrapper **/
 
 /** list page css **/
-.list-header-section {
-	display: flex;
-	align-items: center;
-}
-.list-header-section  .action-button{
+.other-action {
 	margin-left: auto;
 }
-.search-box input {
-	line-height: 40px;
+.search-input {
+	border: 1px solid #ddd;
 	width: 250px;
-	text-align: ;
-	text-indent: 15px;
-	font-size: 16px;
-	border-radius: 5px;
-	border: 1px solid var(--sidebariconColor);
-	color: var(--sidebariconColor);
+	text-indent: 17px;
+	font-size: 18px;
+	height: 40px;
+	border-radius: 30px;
+	color: #ccc;
+	outline: none;
 }
-.action-button .action-create-button {
-	padding: 10px 20px;
-	background: var(--successButton);
-	border: 0px;
-	color: var(--white);
-	font-size: 17px;
-	border-radius: 4px;
+.create-btn {
+	border: 1px solid var(--successButton);
+	color: var(--successButton);
+	font-size: 16px;
+	height: 40px;
+	padding: 0px 30px;
+	display: flex;
+	align-items: center;
+	border-radius: 30px;
 }
 /** end of list page css **/
+
+/** form css **/
+.form-row {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	row-gap: 20px;
+}
+.form-group label{
+	display: block;
+	font-size:18px;
+	line-height:30px;
+}
+.form-input {
+	width: 100%;
+	height: 40px;
+	text-indent: 15px;
+	font-size: 14px;
+	color: #ccc;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	outline: none;
+}
+.form-group-md-6{
+	width: calc(100% / 2 - 15px);
+
+}
+.form-group-md-12{
+	width: 100%;
+}
+.form-submit {
+	background: var(--primaryButton);
+	border: 0px;
+	font-size: 18px;
+	color: #fff;
+	padding: 11px 30px;
+	border-radius: 30px;
+}
+.form-back {
+	background: var(--warningButton);
+	border: 0px;
+	font-size: 18px;
+	color: #fff;
+	padding: 11px 30px;
+	border-radius: 30px;
+}
+/** end of form css **/

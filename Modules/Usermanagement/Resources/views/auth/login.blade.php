@@ -12,39 +12,43 @@
 <body>
 	<section class="login-wrapper">
 		<div class="login-form">
-			{!! Form::open(['url'=>route('admin.loginProcess'),'class'=>'form-data']) !!}
-				<div class="form-group">
-					{!! Form::label('username', 'Username') !!}
-					{!! Form::text('username',old('username'),['class'=>'form-control','placeholder'=>'Username','data-validation'=>'required']) !!}
-					@if($errors->has('username'))
-						@foreach($errors->get('username') as $message)
-						<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label><br>
-						@endforeach
-					@endif
-				</div>
-				<div class="form-group">
-					{!!Form::label('password', 'Password') !!}
-					{!! Form::password('password',['class'=>'form-control','placeholder'=>'Password','data-validation'=>'required']) !!}
-					@if($errors->has('password'))
-						@foreach($errors->get('password') as $message)
-						<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label><br>
-						@endforeach
-					@endif
-				</div>
-				<div class="form-flex">
-					<div class="remember">
-						<input class="form-check-input" type="checkbox" id="basic_checkbox_1" name="remember" value="1"
-                  {{ (old('remember')) ? 'checked' : '' }}>
-            <label class="form-check-label" for="basic_checkbox_1">Remember me</label>
-					</div>
-					<div class="forget">
-              <a href="#">Forgot Password?</a>
-          </div>
-				</div>
-				<div class="form-group">
-					<button type="submit" class="btn btn-primary btn-block">Login</button>
-				</div>
-			{!! Form::close() !!}
+			<div class="login-bg">
+			</div>
+			<div class="login-form-wrapper">
+					{!! Form::open(['url'=>route('admin.loginProcess'),'class'=>'form-data']) !!}
+						<div class="form-group">
+							{!! Form::label('username', 'Username') !!}
+							{!! Form::text('username',old('username'),['class'=>'form-control','placeholder'=>'Username','data-validation'=>'required']) !!}
+							@if($errors->has('username'))
+								@foreach($errors->get('username') as $message)
+								<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label><br>
+								@endforeach
+							@endif
+						</div>
+						<div class="form-group">
+							{!!Form::label('password', 'Password') !!}
+							{!! Form::password('password',['class'=>'form-control','placeholder'=>'Password','data-validation'=>'required']) !!}
+							@if($errors->has('password'))
+								@foreach($errors->get('password') as $message)
+								<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label><br>
+								@endforeach
+							@endif
+						</div>
+						<div class="form-flex">
+							<div class="remember">
+								<input class="form-check-input" type="checkbox" id="basic_checkbox_1" name="remember" value="1"
+		                  {{ (old('remember')) ? 'checked' : '' }}>
+		            <label class="form-check-label" for="basic_checkbox_1">Remember me</label>
+							</div>
+							<div class="forget">
+		              <a href="#">Forgot Password?</a>
+		          </div>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-block">Login</button>
+						</div>
+					{!! Form::close() !!}
+			</div>
 		</div>
 	</section>
 </body>

@@ -24,7 +24,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('usermanagement::create');
+        return view('usermanagement::permission.form');
     }
 
     /**

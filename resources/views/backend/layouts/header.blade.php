@@ -9,7 +9,7 @@
 						<a href="#" class="top-nav-link"><img src="/backend/images/user.png" class='sm-img'> <i class="fa fa-angle-down"></i></a>
 						<ul class="top-nav-dropdown admin-nav-list">
 							<li><a href="#"><i class="fa fa-user"></i>Profile</a></li>
-							<li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+							<li><a href="{{route('admin.logout')}}"><i class="fa fa-sign-out"></i>Logout</a></li>
 						</ul>
 					</li>
 				</ul>

@@ -18,7 +18,7 @@ class PermissionMiddleware
 
     public function handle(Request $request, Closure $next,...$args)
     {
-        if (Auth::guard('admin')->guest() && !$this->shouldPassThrough($request)) {
+        if (Auth::guard(BACKEND_GUARD)->guest() && !$this->shouldPassThrough($request)) {
             return redirect()->guest(route('admin.login'));
         }
         return $next($request);
@@ -35,8 +35,8 @@ class PermissionMiddleware
     {
         $routePath = $request->path();
         $exceptsPAth = [
-            config('dashboard.BACKEND_TEMPLATE_PREFIX') . '/login',
-            config('dashboard.BACKEND_TEMPLATE_PREFIX') . '/logout',
+            BACKEND_TEMPLATE_PREFIX.'/login',
+            BACKEND_TEMPLATE_PREFIX.'/logout',
         ];
         return in_array($routePath, $exceptsPAth);
     }

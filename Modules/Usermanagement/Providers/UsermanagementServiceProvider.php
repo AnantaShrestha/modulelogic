@@ -37,9 +37,6 @@ class UsermanagementServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (\File::exists(module_path('Usermanagement') . '\Helper\UsermanagementHelper.php')) {
-            require module_path('Usermanagement') . '\Helper\UsermanagementHelper.php';
-        }
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(PermissionServiceProvider::class);
     }

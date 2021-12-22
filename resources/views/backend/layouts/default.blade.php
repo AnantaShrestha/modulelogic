@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	@php
+		$breadcrum=breadCrum();
+	@endphp
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>@section('title') @show</title>
+	<title>{{implode(' ',$breadcrum)}}</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('backend/css/setting.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('backend/css/style.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('backend/css/fonts.css')}}">
@@ -12,14 +15,16 @@
 </head>
 <body>
 	<div id="main-wrapper" class="main-wrapper">
-		@include('dashboard::layouts.sidebar')
+		@include('backend.layouts.sidebar')
 		<div class="content-body">
-			@include('dashboard::layouts.header')
+			@include('backend.layouts.header')
 			<div class="page-title-wrapper">
-				<h1 class="current-page">@section('title') @show</h1>
+				<h1 class="current-page">{{implode(' ',$breadcrum)}}</h1>
 				<ul class="page-directory">
 					<li><i class="fa fa-home"></i></li>
-					<li>@section('title') @show</li>
+					@foreach($breadcrum as $title)
+						<li>{{$title}}</li>
+					@endforeach
 				</ul>
 			</div>
 			<div class="main-content-wrapper">

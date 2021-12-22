@@ -1,5 +1,4 @@
-@extends('dashboard::layouts.default')
-@section('title',config('role.index'))
+@extends('backend.layouts.default')
 @section('content')
 
 @endsection

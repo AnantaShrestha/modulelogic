@@ -46,13 +46,13 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
-            $path=base_path().'app/Modules/*';
+            /*$path=base_path().'app/Modules/*';
             $moduleFiles=glob($path);
             foreach($moduleFiles as $file){
                 Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group($file.'/web.php');
-            }
+            }*/
         });
     }
 

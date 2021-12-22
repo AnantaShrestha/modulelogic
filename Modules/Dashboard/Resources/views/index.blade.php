@@ -1,5 +1,4 @@
-@extends('dashboard::layouts.default')
-@section('title',config('dashboard.name'))
+@extends('backend.layouts.default')
 @section('content')
 
 @endsection

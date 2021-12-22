@@ -14,7 +14,6 @@ class AuthController extends Controller
      */
     public function login()
     {
-
         if ($this->guard()->check()) {
             return redirect($this->redirectPath());
         }
