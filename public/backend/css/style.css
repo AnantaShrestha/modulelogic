@@ -278,3 +278,45 @@
 	border-radius: 30px;
 }
 /** end of form css **/
+
+/** validation error css **/
+.validation-error {
+	font-size: 17px;
+	color: red;
+	margin-top: 7px;
+}
+/** end of validation **/
+
+.permissionlist-wrapper {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	margin-top: 15px;
+	/*background: #fafafa;
+	border: 1px solid rgba(0,0,0,0.1);
+	padding: 15px 20px;*/
+}
+.permissionlist-wrapper .permission-item{
+	width: calc(100% / 4 - 15px);
+
+}
+.permission-title {
+	font-size: 16px;
+	font-weight: 500;
+	background: var(--sidebarhover);
+	width: 100%;
+	border-radius: 25px;
+	line-height: 35px;
+}
+.permission-title h3{
+	color: #fff;
+	padding: 0px 15px;
+	font-weight: 500;
+}
+.permission-list ul {
+	padding: 10px 15px;
+}
+.permission-list ul li {
+	line-height:25px;
+}
+/** end of permission css **/

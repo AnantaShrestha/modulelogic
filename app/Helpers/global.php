@@ -26,3 +26,10 @@ if(!function_exists('breadCrum')){
 		return $breadCrum;
 	}
 }
+
+if(!function_exists('get_routes_collection')){
+	function get_routes_collection(){
+		$routes=\Route::getRoutes()->getRoutesByMethod();
+		return array_merge($routes['GET'],$routes['POST'],$routes['PUT'],$routes['DELETE']);
+	}
+}

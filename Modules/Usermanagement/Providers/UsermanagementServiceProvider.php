@@ -39,6 +39,7 @@ class UsermanagementServiceProvider extends ServiceProvider
     {
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(PermissionServiceProvider::class);
+        $this->app->register(UsermanagementViewComposerServiceProvider::class);
     }
 
     /**

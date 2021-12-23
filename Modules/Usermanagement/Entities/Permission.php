@@ -3,16 +3,23 @@
 namespace Modules\Usermanagement\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 class Permission extends Model
 {
-    use HasFactory;
 
-    protected $fillable = [];
-    
-    protected static function newFactory()
+    protected $guarded = [];
+    protected $table='permissions';
+
+    public function setAccessUriAttribute($value)
     {
-        return \Modules\Usermanagement\Database\factories\PermissionFactory::new();
+        $this->attributes['access_uri'] = implode(',', ($value ?? []));
     }
+
+
+    protected static function boot() {
+        parent::boot();
+        static::creating(function ($permission) {
+            $permission->slug = \Str::slug($permission->name);
+        });
+    }
+
 }

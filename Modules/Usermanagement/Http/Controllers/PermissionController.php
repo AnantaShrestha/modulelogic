@@ -5,17 +5,23 @@ namespace Modules\Usermanagement\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Usermanagement\Repository\PermissionRepo\PermissionRepo;
+use Modules\Usermanagement\Repository\PermissionRepo\PermissionRequest;
 
 class PermissionController extends Controller
 {
+    private $permissionRepo;
+    public function __construct(PermissionRepo $permissionRepo){
+        $this->permissionRepo=$permissionRepo;
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-
-        return view('usermanagement::permission.index');
+        $data['permissions']=$this->permissionRepo->getPermissionList();
+        return view('usermanagement::permission.index',$data);
     }
 
     /**
@@ -32,9 +38,10 @@ class PermissionController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(PermissionRequest $request)
     {
-        //
+        $this->permissionRepo->storePermission($request);
+        return redirect()->route('admin.permission')->with(['message'=>'Permission created successfully']);
     }
 
     /**
