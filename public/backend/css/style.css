@@ -320,3 +320,56 @@
 	line-height:25px;
 }
 /** end of permission css **/
+
+/** datatable css **/
+.dataTable_table{
+	width: 100%;
+
+}
+.list-action-wrapper {
+	margin-bottom: 30px;
+}
+.dataTable_table thead{
+	background: #E7EAEE;
+	line-height: 38px;
+}
+.dataTable_table thead tr th {
+	text-align: left;
+	font-size: 14px;
+	padding: 0px 10px;
+	color: rgba(0,0,0,0.5);
+}
+.dataTable_table tbody tr{
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.dataTable_table tbody tr td{
+
+	padding: 20px 10px;
+}
+.dataTable_table tbody tr:nth-child(even){
+	background: #fafafa;
+}
+.update_button {
+	background: var(--primaryButton);
+	font-size: 16px;
+	color: #fff;
+	border-radius: 4px;
+	padding: 4px 15px;
+	border: 0px;
+	display: inline-flex;
+	height: 25px;
+	align-items: center;
+}
+.delete_button {
+	background: var(--dangerButton);
+	font-size: 16px;
+	color: #fff;
+	border-radius: 4px;
+	padding: 4px 15px;
+	border: 0px;
+	display: inline-flex;
+	height: 34px;
+	align-items: center;
+	margin-left: 5px;
+}
+/** end of datatable css **/

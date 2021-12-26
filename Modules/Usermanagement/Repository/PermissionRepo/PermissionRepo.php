@@ -2,7 +2,7 @@
 namespace Modules\Usermanagement\Repository\PermissionRepo;
 use Modules\Usermanagement\Entities\Permission;
 use Illuminate\Http\Request;
-
+use Modules\Usermanagement\DataTables\PermissionDataTable;
 class PermissionRepo implements PermissionInterface{
 	private $permission;
 
@@ -27,7 +27,7 @@ class PermissionRepo implements PermissionInterface{
 	 * @return find permission according to id
 	 */
 	public function findPermission($id){
-		return $this->permission->findOrFails($id);
+		return $this->permission->find($id);
 	}
 
 	/**
@@ -35,7 +35,7 @@ class PermissionRepo implements PermissionInterface{
 	 */
 	public function updatePermission(Request $request,$id){
 		$permission=$this->findPermission($id);
-		return $permission->update($request->all());
+		return $permission->update($request->except('_token'));
 	}
 
 	/**
@@ -45,4 +45,12 @@ class PermissionRepo implements PermissionInterface{
 		$permission=$this->findPermission($request->id);
 		return $permission->delete();
 	}
+
+	/**
+	 * @return datatable
+	 */
+	public function dataTableList(){
+		return (new PermissionDataTable)->dataTable($this->permission);
+	}
+
 }

@@ -30,6 +30,16 @@ if(!function_exists('breadCrum')){
 if(!function_exists('get_routes_collection')){
 	function get_routes_collection(){
 		$routes=\Route::getRoutes()->getRoutesByMethod();
-		return array_merge($routes['GET'],$routes['POST'],$routes['PUT'],$routes['DELETE']);
+		return array_merge($routes['GET'],$routes['POST'],$routes['DELETE']);
+	}
+}
+if(!function_exists('edit_icon')){
+	function edit_icon(){
+		return '<i class="fa fa-edit"></i>';
+	}
+}
+if(!function_exists('delete_icon')){
+	function delete_icon(){
+		return '<i class="fa fa-trash"></i>';
 	}
 }

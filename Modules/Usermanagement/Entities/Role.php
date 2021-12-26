@@ -3,16 +3,19 @@
 namespace Modules\Usermanagement\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Role extends Model
 {
-    use HasFactory;
+    protected $guarded = [];
+    protected $table='roles';
 
-    protected $fillable = [];
-    
-    protected static function newFactory()
-    {
-        return \Modules\Usermanagement\Database\factories\RoleFactory::new();
+
+    protected static function boot() {
+        parent::boot();
+        static::creating(function ($role) {
+            $role->slug = \Str::slug($role->name);
+            $role->created_by=\Auth::guard('admin')->user()->id;
+        });
     }
+
 }

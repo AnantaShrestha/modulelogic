@@ -19,6 +19,7 @@ class Permission extends Model
         parent::boot();
         static::creating(function ($permission) {
             $permission->slug = \Str::slug($permission->name);
+            $permission->created_by=\Auth::guard('admin')->user()->id;
         });
     }
 

@@ -23,7 +23,7 @@ Route::prefix(BACKEND_TEMPLATE_PREFIX)->name(BACKEND_TEMPLATE_NAME)->middleware(
         Route::get('create','UserController@create')->name('user.create');
         Route::post('create','UserController@store')->name('user.store');
         Route::get('edit/{id}','UserController@edit')->name('user.edit');
-        Route::put('edit/{id}','UserController@update')->name('user.update');
+        Route::post('edit/{id}','UserController@update')->name('user.update');
         Route::delete('delete','UserController@delete')->name('user.delete');
     });
 
@@ -32,7 +32,7 @@ Route::prefix(BACKEND_TEMPLATE_PREFIX)->name(BACKEND_TEMPLATE_NAME)->middleware(
         Route::get('create','PermissionController@create')->name('permission.create');
         Route::post('create','PermissionController@store')->name('permission.store');
         Route::get('edit/{id}','PermissionController@edit')->name('permission.edit');
-        Route::put('edit/{id}','PermissionController@update')->name('permission.update');
+        Route::post('edit/{id}','PermissionController@update')->name('permission.update');
         Route::delete('delete','PermissionController@delete')->name('permission.delete');
     });
 
@@ -41,7 +41,7 @@ Route::prefix(BACKEND_TEMPLATE_PREFIX)->name(BACKEND_TEMPLATE_NAME)->middleware(
         Route::get('create','RoleController@create')->name('role.create');
         Route::post('create','RoleController@store')->name('role.store');
         Route::get('edit/{id}','RoleController@edit')->name('role.edit');
-        Route::put('edit/{id}','RoleController@update')->name('role.update');
+        Route::post('edit/{id}','RoleController@update')->name('role.update');
         Route::delete('delete','RoleController@delete')->name('role.delete');
     });
 });

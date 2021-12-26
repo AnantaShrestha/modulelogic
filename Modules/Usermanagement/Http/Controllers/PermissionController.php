@@ -2,12 +2,10 @@
 
 namespace Modules\Usermanagement\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Usermanagement\Repository\PermissionRepo\PermissionRepo;
 use Modules\Usermanagement\Repository\PermissionRepo\PermissionRequest;
-
 class PermissionController extends Controller
 {
     private $permissionRepo;
@@ -18,9 +16,12 @@ class PermissionController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['permissions']=$this->permissionRepo->getPermissionList();
+        $data['permissionsDataTable']=$this->permissionRepo->dataTableList();
+        if($request->ajax()){
+            return $data['permissionsDataTable']->render();
+        }
         return view('usermanagement::permission.index',$data);
     }
 
@@ -45,23 +46,14 @@ class PermissionController extends Controller
     }
 
     /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('usermanagement::show');
-    }
-
-    /**
      * Show the form for editing the specified resource.
      * @param int $id
      * @return Renderable
      */
     public function edit($id)
     {
-        return view('usermanagement::edit');
+        $data['permission']=$this->permissionRepo->findPermission($id);
+        return view('usermanagement::permission.form')->with($data);
     }
 
     /**
@@ -72,7 +64,8 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->permissionRepo->updatePermission($request,$id);
+         return redirect()->route('admin.permission')->with(['message'=>'Permission updated successfully']);
     }
 
     /**

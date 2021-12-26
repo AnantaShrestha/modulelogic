@@ -1,5 +1,5 @@
 <?php	
-	$old_access_uri = old('access_uri',(isset($permission)) ? explode(',', $permission->http_uri) : []);
+	$old_access_uri = old('access_uri',(isset($permission)) ? explode(',', $permission->access_uri) : []);
 ?>
 @foreach($routeList as $key=>$routes)
 	<div class="permission-item">

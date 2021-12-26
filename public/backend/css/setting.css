@@ -57,4 +57,17 @@ p{
 .sm-img{
 	height: 25px;
 }
+table{
+	width: 100%;
+	border-collapse: collapse;
+}
+table thead tr th
+{
+	font-size: 14px;
+	font-weight: 800;
+	font-family: 'Roboto';
 
+}
+table tbody tr td{
+	font-size: 14px;
+}

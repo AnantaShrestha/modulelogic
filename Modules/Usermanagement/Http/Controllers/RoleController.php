@@ -2,19 +2,27 @@
 
 namespace Modules\Usermanagement\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-
+use Modules\Usermanagement\Repository\RoleRepo\RoleRepo;
+use Modules\Usermanagement\Repository\RoleRepo\RoleRequest;
 class RoleController extends Controller
 {
+    private $roleRepo;
+    public function __construct(RoleRepo $roleRepo){
+        $this->roleRepo=$roleRepo;
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('usermanagement::index');
+        $data['rolesDataTable']=$this->roleRepo->dataTableList();
+        if($request->ajax()){
+            return $data['rolesDataTable']->render();
+        }
+        return view('usermanagement::role.index')->with($data);
     }
 
     /**
@@ -23,7 +31,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('usermanagement::create');
+        return view('usermanagement::role.form');
     }
 
     /**
