@@ -19,7 +19,7 @@ Route::prefix(BACKEND_TEMPLATE_PREFIX)->name(BACKEND_TEMPLATE_NAME)->group(funct
 });
 Route::prefix(BACKEND_TEMPLATE_PREFIX)->name(BACKEND_TEMPLATE_NAME)->middleware(BACKEND_MIDDLEWARE)->group(function() {
     Route::group(['prefix'=>'user'],function(){
-        Route::get('/','RoleController@index')->name('user');
+        Route::get('/','UserController@index')->name('user');
         Route::get('create','UserController@create')->name('user.create');
         Route::post('create','UserController@store')->name('user.store');
         Route::get('edit/{id}','UserController@edit')->name('user.edit');

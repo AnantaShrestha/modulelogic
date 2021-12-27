@@ -40,11 +40,21 @@ this.initialObject=function(){
 				}
 			})
 	},
+	this.multipleSelect=function(){
+		$('.multiple-select').each(function(){
+			let id='#'+$(this).attr('id')
+			$(id).select2({
+				placeholder: 'Select'
+			})
+
+		})
+	},
 	this.init=function(){
 		$(document).ready(function(){
 			_this.sideBaropenCloseListener()
 			_this.sideBarDropdownListener()	
 			_this.topnavDropdownListener()
+			_this.multipleSelect()
 		})
 	}
 }

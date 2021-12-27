@@ -39,19 +39,10 @@ class RoleController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('usermanagement::show');
+        $this->roleRepo->storeRole($request);
+        return redirect()->route('admin.role')->with(['message','Role Created Successfuly']);
     }
 
     /**
@@ -61,7 +52,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        return view('usermanagement::edit');
+        $data['role']=$this->roleRepo->findRole($id);
+        return view('usermanagement::role.form')->with($data);
     }
 
     /**
@@ -70,9 +62,10 @@ class RoleController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(RoleRequest $request, $id)
     {
-        //
+        $this->roleRepo->updateRole($request,$id);
+        return redirect()->route('admin.role')->with(['message','Role updated successfully']);
     }
 
     /**

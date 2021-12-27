@@ -373,3 +373,42 @@
 	margin-left: 5px;
 }
 /** end of datatable css **/
+
+/** select 2 css **/
+
+.select2-search__field {
+	width: 100% !important;
+	line-height: 40px;
+}
+.selection {
+	width: 100%;
+	line-height: 15px;
+}
+.select2-container .select2-search--inline .select2-search__field {
+	margin-top: 0px !important;
+	color: #ccc;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+	border: 1px solid #ccc !important;
+	outline: 0;
+	outline: none !important;
+}
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+	padding-left: 15px !important;
+	line-height: 40px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+	list-style: none;
+	line-height: 31px;
+}
+.select2-container--default .select2-selection--multiple {
+	border: 1px solid #ccc !important;
+}
+/** end of select 2 **/
+
+.list-item {
+	background: var(--successButton);
+	padding: 4px 5px;
+	border-radius: 4px;
+	color: var(--white);
+}

@@ -15,6 +15,7 @@ class RoleDataTable{
 	 * @return query to get data
 	 */
 	public function query($query){
+		$query=$query->with('permissions','users');
 		if(isset($_GET['search'])  && !empty($_GET['search'])){
 			$search=$_GET['search'];
 			$query=$query->where('name','like','%'.$search.'%');
@@ -32,8 +33,15 @@ class RoleDataTable{
 	*/
 	public function editable($key,$obj){
 		switch ($key) {
+			case 'permissionlist':
+				$list='';
+				foreach($obj->permissions as $permission){
+					$list.='<span class="list-item">'.$permission->name.'</span>';
+				}
+				return $list;
+				break;
 			case 'action':
-				return '<a class="update_button" href="'.route('admin.route.edit',['id'=>$obj->id]).'">'.edit_icon().'</a><button class="delete_button">'.delete_icon().'</button>';
+				return '<a class="update_button" href="'.route('admin.role.edit',['id'=>$obj->id]).'">'.edit_icon().'</a><button class="delete_button">'.delete_icon().'</button>';
 				break;
 			default:
 				return null;
@@ -50,6 +58,10 @@ class RoleDataTable{
 			'name' =>'Name',
 			'slug' =>'Slug',
 			'created_at'=>'Created At',
+			'permissionlist'=>[
+				'title'=>'Permission List',
+				'editable'=>true
+			],
 			'action'=>[
 				'title'=>'Action',
 				'editable'=>true

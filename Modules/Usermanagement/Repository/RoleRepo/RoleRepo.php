@@ -14,20 +14,27 @@ class RoleRepo implements RoleInterface{
 	 * @return list of permission
 	 */
 	public function getRoleList(){
-		return $this->role->orderBy('created_at','desc')->get();
+		return $this->role->with('permissions','users')->orderBy('created_at','desc')->get();
 	}
 	/**
 	 * @return creat Role
 	 */
 	public function storeRole(Request $request){
-		return $this->role->create($request->except('_token'));
+		$role=$this->role->create($request->except('_token','permissions','users'));
+		$permissions=$request->permissions ?? [];
+		$users=$request->users ?? [];
+		if($permissions)
+			$role->permissions()->attach($permissions);
+		if($users)
+			$role->users()->attach($users);
+		return $role;
 	}
 
 	/**
 	 * @return find Role according to id
 	 */
 	public function findRole($id){
-		return $this->role->find($id);
+		return $this->role->with('permissions','users')->find($id);
 	}
 
 	/**
@@ -35,7 +42,14 @@ class RoleRepo implements RoleInterface{
 	 */
 	public function updateRole(Request $request,$id){
 		$role=$this->findRole($id);
-		return $role->update($request->except('_token'));
+		$role->update($request->except('_token','permissions','users'));
+		$permissions=$request->permissions ?? [];
+		$users=$request->users ?? [];
+			$role->permissions()->detach();
+			$role->permissions()->attach($permissions);
+			$role->users()->detach();
+			$role->users()->attach($users);
+		return $role;
 	}
 
 	/**
@@ -43,6 +57,8 @@ class RoleRepo implements RoleInterface{
 	 */
 	public function deleteRole(Request $request){
 		$role=$this->findRole($request->id);
+		$role->permissions->detach();
+		$role->users->detach();
 		return $role->delete();
 	}
 

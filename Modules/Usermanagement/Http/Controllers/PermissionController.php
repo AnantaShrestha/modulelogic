@@ -62,7 +62,7 @@ class PermissionController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(PermissionRequest $request, $id)
     {
         $this->permissionRepo->updatePermission($request,$id);
          return redirect()->route('admin.permission')->with(['message'=>'Permission updated successfully']);

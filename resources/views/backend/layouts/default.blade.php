@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('backend/css/responsive.css')}}">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="{{asset('backend/vendor/sweetalert2/dist/sweetalert2.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('backend/vendor/select2/css/select2.min.css')}}">
 </head>
 <body>
 	<div id="main-wrapper" class="main-wrapper">
@@ -37,6 +38,7 @@
 	</div>
 
 	<script src="{{asset('backend/vendor/jquery/jquery.min.js')}}"></script>
+	<script src="{{asset('backend/vendor/select2/js/select2.full.min.js')}}"></script>
 	<script src="{{asset('backend/vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
 	<script src="{{asset('backend/js/main.js')}}"></script>
 	@stack('scripts')
