@@ -1,10 +1,10 @@
 @extends('backend.layouts.default')
 @php
-
+$url=(isset($user)) ? route('admin.user.update',['id'=>$user['id']]) : route('admin.user.store');
 @endphp
 @section('content')
 <div class="form-wrapper">
-	{!! Form::open(['url' =>'','class'=>'form-data']) !!}
+	{!! Form::open(['url' =>$url,'class'=>'form-data']) !!}
 		<div class="form-row">
 			<div class="form-group form-group-md-6">
 				{!! Form::label('name', 'Full Name') !!}

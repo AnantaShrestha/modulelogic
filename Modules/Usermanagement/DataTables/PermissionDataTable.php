@@ -32,8 +32,11 @@ class PermissionDataTable{
 	*/
 	public function editable($key,$obj){
 		switch ($key) {
+			case 'created_at':
+				return $obj->created_at->format('Y/m/d');
+				break;
 			case 'action':
-				return '<a class="update_button" href="'.route('admin.permission.edit',['id'=>$obj->id]).'">'.edit_icon().'</a><button class="delete_button">'.delete_icon().'</button>';
+				return '<a class="update_button" href="'.route('admin.permission.edit',['id'=>$obj->id]).'">'.edit_icon().'</a><button class="delete_button" data-id="'.$obj->id.'" data-url="'.route('admin.permission.delete').'">'.delete_icon().'</button>';
 				break;
 			default:
 				return null;
@@ -50,7 +53,10 @@ class PermissionDataTable{
 			'name' =>'Name',
 			'slug' =>'Slug',
 			'access_uri'=>'Access Url',
-			'created_at'=>'Created At',
+			'created_at'=>[
+				'title'=>'Created At',
+				'editable'=>true
+			],
 			'action'=>[
 				'title'=>'Action',
 				'editable'=>true
@@ -75,6 +81,6 @@ class PermissionDataTable{
 	 * @return datatable id
 	 */
 	public function tableId(){
-		return 'permission_table';
+		return 'permissionTable';
 	}
 }

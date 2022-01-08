@@ -1,30 +1,11 @@
-
 @if ($paginator->hasPages())
     <ul class="pagination">
-        @if ($paginator->onFirstPage())
-            <li class="disabled previous"><span>← Previous</span></li>
-        @else
-            <li class="previous"><a class="paginate-item" href="{{ $paginator->previousPageUrl() }}" rel="prev">← Previous</a></li>
-        @endif
         @foreach ($elements as $element)
-           
-            @if (is_string($element))
-                <li class="disabled"><span>{{ $element }}</span></li>
-            @endif
             @if (is_array($element))
                 @foreach ($element as $page => $url)
-                    @if ($page == $paginator->currentPage())
-                        <li class="active my-active "><span>{{ $page }}</span></li>
-                    @else
-                        <li><a class="paginate-item page-item" href="{{ $url }}">{{ $page }}</a></li>
-                    @endif
+                    <li class="{{$page== 1 ? 'active' : ''}}"><a class="paginate-item page-item " href="{{ $url }}">{{ $page }}</a></li>
                 @endforeach
             @endif
         @endforeach        
-        @if ($paginator->hasMorePages())
-            <li class="next"><a href="{{ $paginator->nextPageUrl() }}" rel="next">Next →</a></li>
-        @else
-            <li class="disabled next"><span>Next →</span></li>
-        @endif
     </ul>
 @endif 

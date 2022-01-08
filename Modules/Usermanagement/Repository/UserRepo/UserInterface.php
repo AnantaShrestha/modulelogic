@@ -1,5 +1,6 @@
 <?php
 namespace Modules\Usermanagement\Repository\UserRepo;
+use Illuminate\Http\Request;
 
 interface UserInterface{
 	public function getUserList();

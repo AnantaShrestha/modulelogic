@@ -42,7 +42,7 @@ class PermissionController extends Controller
     public function store(PermissionRequest $request)
     {
         $this->permissionRepo->storePermission($request);
-        return redirect()->route('admin.permission')->with(['message'=>'Permission created successfully']);
+        return redirect()->route('admin.permission')->with(['message'=>'Permission created successfully','type'=>'success']);
     }
 
     /**
@@ -65,7 +65,7 @@ class PermissionController extends Controller
     public function update(PermissionRequest $request, $id)
     {
         $this->permissionRepo->updatePermission($request,$id);
-         return redirect()->route('admin.permission')->with(['message'=>'Permission updated successfully']);
+         return redirect()->route('admin.permission')->with(['message'=>'Permission updated successfully','type'=>'success']);
     }
 
     /**
@@ -73,8 +73,9 @@ class PermissionController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $this->permissionRepo->deletePermission($request);
+        return response()->json(['message'=>'Permission Deleted Successfully','type'=>'warning']);
     }
 }

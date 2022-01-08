@@ -440,7 +440,7 @@
 	align-items: center;
 	justify-content: center;
 }
-.pagination li.active span {
+.pagination li.active  {
 	width: 35px;
 	height: 35px;
 	border-radius: 50%;
@@ -449,6 +449,8 @@
 	font-size: 18px;
 	background: var(--themecolor);
 	justify-content: center;
+}
+.pagination li.active a{
 	color: var(--white);
 }
 /**end of pagination **/

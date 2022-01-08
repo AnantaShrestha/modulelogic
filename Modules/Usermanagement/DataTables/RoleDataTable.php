@@ -41,8 +41,11 @@ class RoleDataTable{
 				}
 				return $list;
 				break;
+			case 'created_at':
+				return $obj->created_at->format('Y/m/d');
+				break;
 			case 'action':
-				return '<a class="update_button" href="'.route('admin.role.edit',['id'=>$obj->id]).'">'.edit_icon().'</a><button class="delete_button">'.delete_icon().'</button>';
+				return '<a class="update_button" href="'.route('admin.role.edit',['id'=>$obj->id]).'">'.edit_icon().'</a><button class="delete_button" data-id="'.$obj->id.'" data-url="'.route('admin.role.delete').'">'.delete_icon().'</button>';
 				break;
 			default:
 				return null;
@@ -58,7 +61,10 @@ class RoleDataTable{
 		return [
 			'name' =>'Name',
 			'slug' =>'Slug',
-			'created_at'=>'Created At',
+			'created_at'=>[
+				'title'=>'Created At',
+				'editable'=>true
+			],
 			'permissionlist'=>[
 				'title'=>'Permission List',
 				'editable'=>true
@@ -87,6 +93,6 @@ class RoleDataTable{
 	 * @return datatable id
 	 */
 	public function tableId(){
-		return 'role_table';
+		return 'roleTable';
 	}
 }

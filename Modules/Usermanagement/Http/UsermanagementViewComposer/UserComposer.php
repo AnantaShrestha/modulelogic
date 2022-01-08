@@ -6,7 +6,7 @@ use Modules\Usermanagement\Entities\User;
 class UserComposer{
 	private $userRepo;
 	public function __construct(UserRepo $userRepo){
-		$this->userRepo=$userRepo
+		$this->userRepo=$userRepo;
 	}
 	public function	compose	(View $view){
 		$users=$this->userRepo->getUserList();

@@ -2,19 +2,28 @@
 
 namespace Modules\Usermanagement\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
 
+use Modules\Usermanagement\Repository\UserRepo\UserRepo;
+use Modules\Usermanagement\Repository\UserRepo\UserRequest;
 class UserController extends Controller
 {
+    private $userRepo;
+    public function __construct(UserRepo $userRepo){
+        $this->userRepo=$userRepo;
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('usermanagement::user.index');
+        $data['usersDataTable']=$this->userRepo->dataTableList();
+        if($request->ajax()){
+            return $data['usersDataTable']->render();
+        }
+        return view('usermanagement::user.index')->with($data);
     }
 
     /**
@@ -33,17 +42,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('usermanagement::show');
+        $this->userRepo->saveUser($request);
+        return redirect()
+        ->route('user.index')
+        ->with(['message'=>'User added Successfully','type'=>'success']);
     }
 
     /**
@@ -53,7 +55,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('usermanagement::edit');
+        $data['user']=$this->userRepo->findUser($id);
+        return view('usermanagement::user.form')->with($data);
     }
 
     /**
@@ -64,7 +67,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->roleRepo->updateUser($request,$id);
+        return redirect()->route('admin.user')->with(['message','User updated successfully','type'=>'success']);
     }
 
     /**
@@ -72,8 +76,9 @@ class UserController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $this->userRepo->deleteUser($request);
+        return response()->json(['message'=>'User Deleted Successfully']);
     }
 }

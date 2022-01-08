@@ -1,5 +1,9 @@
 <?php
 namespace Modules\Usermanagement\Repository\UserRepo;
+use Illuminate\Http\Request;
+use Modules\Usermanagement\Entities\User;
+use Modules\Usermanagement\Repository\UserRepo\UserRequest;
+use Modules\Usermanagement\DataTables\UserDataTable;
 
 class UserRepo implements UserInterface{
 	private $user;
@@ -19,14 +23,21 @@ class UserRepo implements UserInterface{
 	 * @return creat user
 	 */
 	public function storeUser(Request $request){
-		return $this->user->create($request->except('_token'));
+		$user=$this->user->create($request->except('_token','permission','role'));
+		$permissions=$request->permission;
+		$roles=$request->role;
+		if($permissions)
+			$permission->attach($permission);
+		if($roles)
+			$role->attach($role);
+		return $user;
 	}
 
 	/**
 	 * @return find user according to id
 	 */
 	public function findUser($id){
-		return $this->user->find($id);
+		return $this->user->with('permissions','roles')->find($id);
 	}
 
     /**
@@ -34,7 +45,14 @@ class UserRepo implements UserInterface{
 	 */
 	public function updateUser(Request $request,$id){
 		$user=$this->findUser($id);
-		return $user->update($request->except('_token'));
+		$user->update($request->except('_token','permission','role'));
+		$permissions=$request->permissions ?? [];
+		$roles=$request->roles ?? [];
+		$user->permissions()->detach();
+		$user->permissions()->attach($permissions);
+		$user->roles()->detach();
+		$user->roles()->attach($roles);
+		return $user;
 	}
 
 	/**
@@ -42,7 +60,15 @@ class UserRepo implements UserInterface{
 	 */
 	public function deleteUser(Request $request){
 		$user=$this->findUser($request->id);
+		$user->permissions->detach();
+		$user->roles->detach();
 		return $user->delete();
 	}
 
+	/**
+	 * @return datatable
+	 */
+	public function dataTableList(){
+		return (new UserDataTable)->dataTable($this->user);
+	}
 }
