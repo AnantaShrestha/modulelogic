@@ -60,12 +60,14 @@ class PermissionDataTable{
 	/** 
 	 * @return action button
 	 */
-	public function actionButton(){
+	public function settings(){
 		return[
-			'create'=>[
-				'title'=>'Create',
-				'action'=>route('admin.permission.create'),
-				'className'=>'create-btn'
+			'buttons'=>[
+				'create'=>[
+					'title'=>'Create',
+					'action'=>route('admin.permission.create'),
+					'className'=>'create-btn'
+				]
 			]
 		];
 	}

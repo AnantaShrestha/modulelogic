@@ -15,6 +15,7 @@ class RoleDataTable{
 	 * @return query to get data
 	 */
 	public function query($query){
+
 		$query=$query->with('permissions','users');
 		if(isset($_GET['search'])  && !empty($_GET['search'])){
 			$search=$_GET['search'];
@@ -71,12 +72,14 @@ class RoleDataTable{
 	/** 
 	 * @return action button
 	 */
-	public function actionButton(){
+	public function settings(){
 		return[
-			'create'=>[
-				'title'=>'Create',
-				'action'=>route('admin.role.create'),
-				'className'=>'create-btn'
+			'buttons'=>[
+					'create'=>[
+					'title'=>'Create',
+					'action'=>route('admin.role.create'),
+					'className'=>'create-btn'
+				]
 			]
 		];
 	}

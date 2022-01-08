@@ -4,6 +4,8 @@ $url=str_replace('index','pagination',request()->url());
 <script>
 	this.dataTableInitial=function(){
 		let _this=this;
+		let page=1,
+			keyword='';
 		let wrapper=document.querySelector('.datatable_wrapper')
 		if(wrapper){
 			wrapper={
@@ -11,6 +13,7 @@ $url=str_replace('index','pagination',request()->url());
 				table:(wrapper.querySelector('.dataTable_table') || {}),
 				search:(wrapper.querySelector('.search-input') || {}),
 				tableBody:(wrapper.querySelector('.table-body') || {}),
+				pagination:(wrapper.querySelectorAll('.paginate-item')  || {})
 			};
 		}
 		this.dataTableApiRequest=function(page,keyword){
@@ -24,17 +27,30 @@ $url=str_replace('index','pagination',request()->url());
 			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
 			xhr.send()
 		},
-		this.dataTableEventListener=function(){
-			let page=1,
-				keyword
+		this.dataTableSearchEventListener=function(){
 			wrapper.search.addEventListener('keyup',function(event){
 				keyword=this.value
-				_this.dataTableApiRequest(page,keyword,obj.tableBody)
+				_this.dataTableApiRequest(page,keyword)
 			})
-
+		},
+		this.dataTablePaginationEventListener=function(){
+			Array.from(wrapper.pagination).forEach(function(element,index){
+				document.addEventListener('click',function(event){
+					if(event.target.classList.contains('paginate-item') && index==0){
+						event.preventDefault()
+						let url=event.target.getAttribute('href')
+						if(url){
+							page=url.split('page=')[1]
+							_this.dataTableApiRequest(page,keyword)
+						}
+					}
+					
+				})
+			})
 		},
 		this.init=function(){
-			_this.dataTableEventListener()
+			_this.dataTableSearchEventListener()
+			_this.dataTablePaginationEventListener()
 		}
 	}
 	let dataTableObj=new dataTableInitial()

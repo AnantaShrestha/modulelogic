@@ -12,7 +12,7 @@ trait DataTableTrait{
 			$data=\View::make("backend.datatable.includes.table-body")->with($makeData);
 		}else{
 			$makeData['tableId']=$this->tableId();
-			$makeData['actionButton']=$this->actionButton();
+			$makeData['settings']=$this->settings();
 			$data['table']=\View::make("backend.datatable.generate_datatable_html")->with($makeData)->render();
 			$data['script']=\View::make("backend.datatable.generate_datatable_script")->render();
 		}

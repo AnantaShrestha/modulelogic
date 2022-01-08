@@ -8,8 +8,8 @@ $count=0;
 				<input type="text" placeholder="Search" name="search" class="search-input">
 			</div>
 			<div class="other-action">
-				@if($actionButton)
-					@foreach($actionButton as $button)
+				@if($settings['buttons'])
+					@foreach($settings['buttons'] as $button)
 						@if(isset($button['text']) && !empty($button['text']))
 							{!! @$button['text'] !!}
 						@elseif($button['action'] && !empty($button['action']))
@@ -41,6 +41,6 @@ $count=0;
 			
 	</table>
 	<div class="table-pagination">
-		{!! $queryData->links() !!}
+		{!! $queryData->links('backend.datatable.includes.pagination') !!}
 	</div>
 </div>

@@ -1,6 +1,8 @@
 @php
-if(isset($_GET['action']) && $_GET['action'] ==true)
+if(!isset($_GET['page']) || $_GET['page']  <=1)
 	$count=0;
+else
+	$count=\Session::get('rowNum')
 @endphp
 @if($queryData->count() > 0)
 	@foreach($queryData as $key=>$data)
