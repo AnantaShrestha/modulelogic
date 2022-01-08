@@ -1,5 +1,6 @@
 <?php
 namespace Modules\Usermanagement\Repository\UserRepo;
+
 interface UserInterface{
 	public function getUserList();
 	public function storeUser(Request $request);

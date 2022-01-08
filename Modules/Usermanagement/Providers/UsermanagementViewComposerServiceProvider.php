@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Usermanagement\Http\UsermanagementViewComposer\AdminrouteComposer;
 use Modules\Usermanagement\Http\UsermanagementViewComposer\PermissionComposer;
 use Modules\Usermanagement\Http\UsermanagementViewComposer\UserComposer;
-
+use Modules\Usermanagement\Http\UsermanagementViewComposer\RoleComposer;
 
 class UsermanagementViewComposerServiceProvider extends ServiceProvider
 {
@@ -35,7 +35,14 @@ class UsermanagementViewComposerServiceProvider extends ServiceProvider
         );
         view()->composer(
             [
+                'usermanagement::user.form'
+            ],
+            RoleComposer::class
+        );
+        view()->composer(
+            [
                 'usermanagement::role.form',
+                'usermanagement::user.form'
             ],
             PermissionComposer::class
         );
