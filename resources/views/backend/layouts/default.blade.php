@@ -12,8 +12,10 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('backend/css/fonts.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('backend/css/responsive.css')}}">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 	<link rel="stylesheet" type="text/css" href="{{asset('backend/vendor/sweetalert2/dist/sweetalert2.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('backend/vendor/select2/css/select2.min.css')}}">
+	@stack("styles")
 </head>
 <body>
 	<div id="main-wrapper" class="main-wrapper">
@@ -21,7 +23,7 @@
 		<div class="content-body">
 			@include('backend.layouts.header')
 			<div class="page-title-wrapper">
-				<h1 class="current-page">{{implode(' ',$breadcrum)}}</h1>
+				<h1 class="current-page">{{implode(' ',array_reverse($breadcrum))}}</h1>
 				<ul class="page-directory">
 					<li><i class="fa fa-home"></i></li>
 					@foreach($breadcrum as $title)
@@ -41,6 +43,8 @@
 	<script src="{{asset('backend/vendor/select2/js/select2.full.min.js')}}"></script>
 	<script src="{{asset('backend/vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
 	<script src="{{asset('backend/js/main.js')}}"></script>
+	@include('backend.layouts.alert')
+	
 	@stack('scripts')
 </body>
 </html>

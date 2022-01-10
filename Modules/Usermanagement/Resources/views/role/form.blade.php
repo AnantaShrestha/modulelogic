@@ -28,7 +28,7 @@
 				{!! Form::label('Select User', 'Select User') !!}
 				{!! Form::select('users[]',$users->pluck('name','id'),(isset($role)) ? $role->users->pluck('id') : old('users'),['class'=>'form-input multiple-select','id'=>'user-list','multiple'=>'multiple']) !!}
 			</div>
-			<div class="form-group form-group-md-12">
+			<div class="form-group form-group-md-12 form-action-button-wrapper">
 				<button class="form-submit">{{isset($role) ? 'Update' : 'Create'}}</button>
 				<a href="{{route('admin.role')}}" class="form-back">Back</a>
 			</div>

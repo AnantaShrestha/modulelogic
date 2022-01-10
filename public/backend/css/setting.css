@@ -71,3 +71,24 @@ table thead tr th
 table tbody tr td{
 	font-size: 14px;
 }
+
+/** width setting **/
+.width-40{
+	width: 40%;
+}
+.width-50{
+	width: 50%;
+}
+.width-55{
+	width: 55%;
+}
+/**end of width setting **/
+/** form setting **/
+
+
+select {
+	background: none !important;
+	height: 43px !important;
+	text-indent: 15px !important;
+}
+/** end of form setting **/

@@ -249,7 +249,7 @@
 	height: 40px;
 	text-indent: 15px;
 	font-size: 14px;
-	color: #ccc;
+	color: #888;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	outline: none;
@@ -261,21 +261,32 @@
 .form-group-md-12{
 	width: 100%;
 }
+.form-action-button-wrapper{
+	display: flex;
+	align-items: center;
+	column-gap:5px;
+}
 .form-submit {
 	background: var(--primaryButton);
 	border: 0px;
 	font-size: 18px;
 	color: #fff;
-	padding: 11px 30px;
+	width: 125px;
+	height: 40px;
 	border-radius: 30px;
+
 }
 .form-back {
 	background: var(--warningButton);
 	border: 0px;
 	font-size: 18px;
 	color: #fff;
-	padding: 11px 30px;
 	border-radius: 30px;
+	width: 125px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 /** end of form css **/
 
@@ -454,3 +465,60 @@
 	color: var(--white);
 }
 /**end of pagination **/
+
+
+/** menu list css **/
+.menu-list-wrapper .row-wrapper{
+	justify-content: space-between;
+}
+.iconpicker-popover.popover {
+	width: 353px !important;
+	left: 47px !important;
+}
+.form-control.iconpicker-search {
+	display: block;
+	width: 100%;
+	height: 40px;
+	text-indent: 10px;
+	font-size: 15px;
+}
+.menu-listing-wrapper .dd {
+	max-width: 100%;
+}
+.menu-listing-wrapper .dd-list .dd-item .dd-handle ,.dd-placeholder{
+	height: 40px !important;
+	display: flex !important;
+	align-items: center;
+	background: #fafafa !important;
+	border: 1px solid #ddd !important;
+	font-size: 20px !important;
+	font-weight: 400 !important;
+	color: #304156 !important;
+}
+.menu-listing-wrapper .dd-list .dd-item .dd-handle span{
+	margin-left: auto;
+}
+.dd-item.dd-collapsed button {
+	font-size: 19px;
+	height: 31px;
+}
+.menu-edit-btn {
+	color: var(--primaryButton);
+}
+.menu-delete-btn {
+	color: var(--dangerButton);
+}
+.menu-save-button {
+	margin-top: 20px;
+}
+.menu-save-button a {
+	background: var(--successButton);
+	padding: 7px 40px;
+	color: var(--bodyBg);
+	font-size: 21px;
+	border-radius: 30px;
+}
+.dd-list .dd-list {
+	padding-left: 60px !important;
+}
+/** end of menu list css **/

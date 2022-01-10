@@ -1,6 +1,6 @@
 @extends('backend.layouts.default')
 @php
-	$url=isset($permission) ? route('admin.permission.update',['id'=>$permission->id]) : route('admin.permission.create'); 
+	$url=isset($permission) ? route('admin.permission.update',['id'=>$permission->id]) : route('admin.permission.store'); 
 @endphp
 @section('content')
 <div class="form-wrapper">
@@ -26,7 +26,7 @@
 					@include('usermanagement::permission.includes.permission-list')
 				</div>
 			</div>
-			<div class="form-group form-group-md-12">
+			<div class="form-group form-group-md-12 form-action-button-wrapper">
 				<button class="form-submit">{{isset($permission) ? 'Update' : 'Create'}}</button>
 				<a href="{{route('admin.permission')}}" class="form-back">Back</a>
 			</div>

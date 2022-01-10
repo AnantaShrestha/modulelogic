@@ -49,7 +49,7 @@
 							</li>
 							<li class="navigation-item">
 								<div class="navigation-wrapper">
-									<a href="#" class="navigation-link">Menu Setting</a>
+									<a href="{{route('admin.menu')}}" class="navigation-link">Menu Setting</a>
 								</div>
 							</li>
 					</ul>

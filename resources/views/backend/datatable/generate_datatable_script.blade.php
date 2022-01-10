@@ -83,10 +83,8 @@ $url=str_replace('index','pagination',request()->url());
 				document.addEventListener('click',function(event){
 					if(event.target.classList.contains('delete_button') && index==0){
 						let target=event.target
-						let url=target.getAttribute('data-url')
-								let id=target.getAttribute('data-id')
-								_this.dataDeleteApiRequest(url,id,target)
-						/*swal({
+						
+						swal({
 						  title: 'Are you sure?',
 						  text: "It will permanently deleted !",
 						  type: 'warning',
@@ -94,11 +92,14 @@ $url=str_replace('index','pagination',request()->url());
 						  confirmButtonColor: '#3085d6',
 						  cancelButtonColor: '#d33',
 						  confirmButtonText: 'Yes, delete it!'
-						},function(isConfirm){*/
-								
-							
-						/*})
-						*/
+						}).then((willDelete) => {
+							if(willDelete.value){
+								let url=target.getAttribute('data-url')
+								let id=target.getAttribute('data-id')
+								_this.dataDeleteApiRequest(url,id,target)
+							}
+						})
+					
 					}
 				})
 

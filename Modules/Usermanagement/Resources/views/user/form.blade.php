@@ -50,7 +50,7 @@ $url=(isset($user)) ? route('admin.user.update',['id'=>$user['id']]) : route('ad
 				{!! Form::label('permission', 'Select Permission') !!}
 				{!! Form::select('permission[]',$permissions->pluck('name','id'),(isset($user)) ? $user->permissions->pluck('id') : old('permission')  ,['class'=>'form-input permission-list multiple-select','id'=>'userList','multiple'=>'multiple']) !!}
 			</div>
-			<div class="form-group form-group-md-12">
+			<div class="form-group form-group-md-12 form-action-button-wrapper">
 				<button class="form-submit">{{isset($user) ? 'Update' : 'Create'}}</button>
 				<a href="{{route('admin.user')}}" class="form-back">Back</a>
 			</div>
