@@ -31,6 +31,7 @@ $url=(isset($user)) ? route('admin.user.update',['id'=>$user['id']]) : route('ad
 				{!! Form::label('avatar', 'Avatar') !!}
 				{!! Form::file('image',['class'=>'form-input']) !!}
 			</div>
+			@if(!isset($user))
 			<div class="form-group form-group-md-6">
 				{!! Form::label('password','Password') !!}
 				{!! Form::password('password',['class'=>'form-input','placeholder'=>'Password','data-validation'=>(isset($user)) ? '' : 'required|confirm']) !!}
@@ -42,6 +43,7 @@ $url=(isset($user)) ? route('admin.user.update',['id'=>$user['id']]) : route('ad
 				{!! Form::label('confirm','Confirmation') !!}
 				{!! Form::password('password_confirmation',['class'=>'form-input','placeholder'=>'Confirmation','data-validation'=>(isset($user)) ? '' : 'required']) !!}
 			</div>
+			@endif
 			<div class="form-group form-group-md-6">
 				{!! Form::label('roles','Select Roles') !!}
 				{!! Form::select('role[]',$roles->pluck('name','id'),(isset($user)) ? $user->roles->pluck('id') : old('roles')  ,['class'=>'form-input role-list multiple-select','id'=>'roleList','multiple'=>'multiple']) !!}

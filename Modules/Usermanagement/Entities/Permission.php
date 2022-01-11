@@ -34,4 +34,18 @@ class Permission extends Model
         });
     }
 
+
+    public function passRequest(): bool{
+        if (empty($this->access_uri)) {
+            return false;
+        }
+        $uriCurrent = \Route::getCurrentRoute()->uri;
+        $urlArr = explode(',', $this->access_uri);
+        if(in_array($uriCurrent,$urlArr)){
+            return true;
+        }
+        return false;
+
+    }
+
 }

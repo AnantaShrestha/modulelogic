@@ -1,12 +1,11 @@
 <?php
 
-namespace Modules\Usermanagement\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Usermanagement\Http\Middleware\PermissionMiddleware;
+use App\Http\Middleware\PermissionMiddleWare;
 class PermissionServiceProvider extends ServiceProvider
 {
-
     protected $routeMiddleware = [
       'admin.permission' => PermissionMiddleware::class,
     ];
@@ -38,7 +37,7 @@ class PermissionServiceProvider extends ServiceProvider
     protected function middlewareGroups()
     {
         return [
-            'admin' => config('usermanagement.middleware.admin'),
+            'admin' => config('middleware.admin'),
         ];
     }
 

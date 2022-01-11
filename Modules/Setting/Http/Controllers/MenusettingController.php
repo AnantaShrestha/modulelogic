@@ -20,7 +20,8 @@ class MenusettingController extends Controller
      */
     public function index()
     {
-        return view('setting::menu.index');
+        $data['menus']=$this->menuRepo->getListMenu()->groupBy('parent_id');
+        return view('setting::menu.index',$data);
     }
 
     /**

@@ -40,11 +40,11 @@ class UserController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $this->userRepo->saveUser($request);
+        $this->userRepo->storeUser($request);
         return redirect()
-        ->route('user.index')
+        ->route('admin.user')
         ->with(['message'=>'User added Successfully','type'=>'success']);
     }
 
@@ -65,10 +65,10 @@ class UserController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        $this->roleRepo->updateUser($request,$id);
-        return redirect()->route('admin.user')->with(['message','User updated successfully','type'=>'success']);
+        $this->userRepo->updateUser($request,$id);
+        return redirect()->route('admin.user')->with(['message'=>'User updated successfully','type'=>'success']);
     }
 
     /**

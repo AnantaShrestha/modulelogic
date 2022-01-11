@@ -5,8 +5,8 @@ use Illuminate\Http\Request;
 use Modules\Setting\Entities\AdminMenu;
 class MenuRepo implements MenuInterface{
 	private $menu;
-	public function __construct(AdminMenu $menu){
-		$this->menu=$menu;
+	public function __construct(){
+		$this->menu=new Adminmenu;
 	}
 
 
@@ -90,5 +90,51 @@ class MenuRepo implements MenuInterface{
 		}
 		return $tree;
 	}
+
+
+
+	 /**
+     * Get list menu can visible for user
+     *
+     * @return  [type]  [return description]
+     */
+    public function getListVisible()
+    {
+       $list = $this->getListMenu();
+       $listVisible = [];
+       $user=\Auth::guard('admin')->user();
+       foreach($list as $menu){
+	       	if (empty($menu->uri) || $menu->uri === 'admin/dashboard') {
+	       		$listVisible[] = $menu;
+	       	} else{
+	       		$url = url($menu->uri);
+	       		if ($user->checkUrlAllowAccess($url)) {
+	       			$listVisible[] = $menu;
+	       		}
+	       	}
+       }
+       $listVisible = collect($listVisible);
+       $groupVisible = $listVisible->groupBy('parent_id');
+        foreach ($listVisible as $key => $value) {
+            if ((isset($groupVisible[$value->id]) && count($groupVisible[$value->id]) == 0)
+                || (!isset($groupVisible[$value->id]) && !$value->uri)
+            ){
+                unset($listVisible[$key]);
+                continue;
+            }
+        }
+        $listVisible=collect($listVisible);
+        $groupVisible = $listVisible->groupBy('parent_id');
+        foreach ($listVisible as $key => $value) {
+            if ((isset($groupVisible[$value->id]) && count($groupVisible[$value->id]) == 0)
+                || (!isset($groupVisible[$value->id]) && !$value->uri)
+            ){
+                unset($listVisible[$key]);
+                continue;
+            }
+        }
+        $listVisible=$listVisible->groupBy('parent_id');
+        return $listVisible;
+    }
 
 }

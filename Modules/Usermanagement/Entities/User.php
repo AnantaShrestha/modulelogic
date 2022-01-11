@@ -4,9 +4,11 @@ namespace Modules\Usermanagement\Entities;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Modules\Usermanagement\Http\Traits\UserPermissionTrait;
 class User extends Model implements AuthenticatableContract
 {
     use Authenticatable;
+    use UserPermissionTrait;
     protected $table='users';
     protected $guarded = [];
     protected $hidden  = [

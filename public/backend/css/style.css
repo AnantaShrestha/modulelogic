@@ -522,3 +522,21 @@
 	padding-left: 60px !important;
 }
 /** end of menu list css **/
+
+/** error page **/
+.error-content {
+	background: #ff7f7f;
+	padding: 15px 25px;
+	border-radius: 4px;
+}
+.error-content span {
+	color: #fafafa;
+	font-size: 18px;
+	line-height: 23px;
+	margin-bottom: 20px;
+}
+.error-content h1{
+	font-size: 32px;
+	color: #fafafa;
+}
+/** end of error page **/

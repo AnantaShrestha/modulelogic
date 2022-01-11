@@ -29,24 +29,20 @@
 			        		if(response.type =='success'){
 			        			swal(response.type, response.message,response.type)
 
-			        		}else{
-			        			swal(
-			        				'Warning',
-			        				response.message,
-			        				'warning'
-			        				)
 			        		}
 			        	},2000)
 			        },error:function(response){
+			        	console.log(response)
 			        	setTimeout(function(){
 			        		icon.removeClass('fa-spinner')
 			        		icon.removeClass('fa-spin')
 			        		icon.addClass('fa-save')
-			        		swal(
-			        				'Error',
-			        				'Permission Denied',
-			        				'error'
-			        			)
+			        		let res=response.responseJSON
+									swal(
+				        				'Error',
+				        				res.message,
+				        				res.type
+			        				)
 			        	},2000)
 			        }
 				})
@@ -80,9 +76,14 @@
 								if (response.type === 'warning') {
 									_this.parent().parent().parent().remove()
 									swal(response.type, response.message,response.type)
-								} else {
-									swal("Error!",'Something went wrong', "error");
 								}
+							},error:function(response){
+								let res=response.responseJSON
+									swal(
+				        				'Error',
+				        				res.message,
+				        				res.type
+			        				)
 							}
 						})
 					}else{

@@ -64,7 +64,7 @@ trait AdminrouteTrait{
         	$prefix.'login',
         	$prefix.'logout',
             $prefix.'dashboard',
-            $prefix.'menu/sort'
+            $prefix.'permission/denied'
         ];
     }
 }

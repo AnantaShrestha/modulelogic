@@ -39,7 +39,6 @@ class SettingViewComposerServiceProvider extends ServiceProvider
         );
         view()->composer(
             [
-                'setting::menu.index',
                 'backend.layouts.sidebar'
             ],
             MenuComposer::class

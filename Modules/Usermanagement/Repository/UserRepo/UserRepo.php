@@ -23,13 +23,13 @@ class UserRepo implements UserInterface{
 	 * @return creat user
 	 */
 	public function storeUser(Request $request){
-		$user=$this->user->create($request->except('_token','permission','role'));
+		$user=$this->user->create($request->except('_token','permission','role','password_confirmation'));
 		$permissions=$request->permission;
 		$roles=$request->role;
 		if($permissions)
-			$permission->attach($permission);
+			$user->attach($permissions);
 		if($roles)
-			$role->attach($role);
+			$user->attach($roles);
 		return $user;
 	}
 
@@ -46,8 +46,8 @@ class UserRepo implements UserInterface{
 	public function updateUser(Request $request,$id){
 		$user=$this->findUser($id);
 		$user->update($request->except('_token','permission','role'));
-		$permissions=$request->permissions ?? [];
-		$roles=$request->roles ?? [];
+		$permissions=$request->permission ?? [];
+		$roles=$request->role ?? [];
 		$user->permissions()->detach();
 		$user->permissions()->attach($permissions);
 		$user->roles()->detach();

@@ -1,4 +1,7 @@
-
+.error{
+	font-size: 13px;
+	color: red;
+}
 .login-wrapper {
 	position: fixed;
 	width: 100%;

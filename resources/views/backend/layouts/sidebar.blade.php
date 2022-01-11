@@ -1,3 +1,4 @@
+
 <div id="sidebar" class="sidebar">
 		<div class="profile-wrapper">
 			<div class="profile-image"><img src="/backend/images/user.png"></div>
@@ -7,53 +8,20 @@
 		</div>
 		<aside>
 			<ul class='parent-navigation'>
-				<li class="navigation-item">
-					<div class="navigation-wrapper">
-						<span class='nav-icon'><i class="fa fa-dashboard"></i></span>
-						<a href="{{route('admin.dashboard')}}" class="navigation-link">Dashboard</a>
-					</div>
-				</li>
-				<li class="navigation-item has-children">
-					<div class="navigation-wrapper">
-						<span class='nav-icon'><i class="fa fa-user"></i></span>
-						<a href="javascript:;" class="navigation-link">User Management<i class="drop-down-chervon fa fa-chevron-down"></i></a>
-					</div>
-					<ul class="navigation-dropdown">
-						<li class="navigation-item">
+				@if($menus && !empty($menus))
+					@foreach($menus[0] as $menu)
+						<li class="navigation-item {{isset($menus[$menu->id]) && count($menus[$menu->id]) ? 'has-children' : ''}}">
 							<div class="navigation-wrapper">
-								<a href="{{route('admin.permission')}}" class="navigation-link">Permission</a>
+								<span class='nav-icon'><i class="{{$menu->icon}}"></i></span>
+								<a href="{{$menu->uri ? (url($menu->uri)) : 'javescript:;'  }}" class="navigation-link">{{$menu->title}} {!! isset($menus[$menu->id]) && count($menus[$menu->id]) ? '<i class="drop-down-chervon fa fa-chevron-down"></i>' : '' !!}</a>
 							</div>
+							 @if(isset($menus[$menu->id]) && count($menus[$menu->id]))
+							 	@include('backend.layouts.includes.sidebarSubMenu',['menu'=>$menu])
+							 @endif
 						</li>
-						<li class="navigation-item">
-							<div class="navigation-wrapper">
-								<a href="/admin/role" class="navigation-link">Role</a>
-							</div>
-						</li>
-						<li class="navigation-item">
-							<div class="navigation-wrapper">
-								<a href="/admin/user" class="navigation-link">User</a>
-							</div>
-						</li>
-					</ul>
-				</li>
-				<li class="navigation-item has-children">
-					<div class="navigation-wrapper">
-						<span class='nav-icon'><i class="fa fa-cogs"></i></span>
-						<a href="javascript:;" class="navigation-link">Setting<i class="drop-down-chervon fa fa-chevron-down"></i></a>
-					</div>
-					<ul class="navigation-dropdown">
-							<li class="navigation-item">
-								<div class="navigation-wrapper">
-									<a href="#'" class="navigation-link">Mail Setting</a>
-								</div>
-							</li>
-							<li class="navigation-item">
-								<div class="navigation-wrapper">
-									<a href="{{route('admin.menu')}}" class="navigation-link">Menu Setting</a>
-								</div>
-							</li>
-					</ul>
-				</li>
+					@endforeach
+				
+				@endif
 			</ul>
 		</aside>
 	</div>
