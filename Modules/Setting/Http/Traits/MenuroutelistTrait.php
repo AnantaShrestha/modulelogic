@@ -34,7 +34,8 @@ trait MenuroutelistTrait{
         return [
         	$prefix.'login',
         	$prefix.'logout',
-        	
+        	$prefix. 'permission/denied',
+        	$prefix.'error',
             $prefix.'permission/pagination',
             $prefix.'permission/edit/{id}',
             $prefix.'permission/delete',

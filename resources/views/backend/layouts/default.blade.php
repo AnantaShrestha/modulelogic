@@ -22,11 +22,11 @@
 		<div class="content-body">
 			@include('backend.layouts.header')
 			<div class="page-title-wrapper">
-				<h1 class="current-page">{{implode(' ',array_reverse($breadcrum))}}</h1>
+				<h1 class="current-page">{{str_replace('-',' ',implode(' ',array_reverse($breadcrum)))}}</h1>
 				<ul class="page-directory">
 					<li><i class="fa fa-home"></i></li>
 					@foreach($breadcrum as $title)
-						<li>{{$title}}</li>
+						<li>{{str_replace('-',' ',$title)}}</li>
 					@endforeach
 				</ul>
 			</div>

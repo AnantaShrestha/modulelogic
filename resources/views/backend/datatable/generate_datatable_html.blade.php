@@ -4,11 +4,13 @@ $count=0;
 <div class="datatable_wrapper">
 	<div class="list-action-wrapper">
 		<div class="row-wrapper">
+			@if(isset($settings['searchBox']) && $settings['searchBox'] == true)
 			<div class="search-action">
 				<input type="text" placeholder="Search" name="search" class="search-input">
 			</div>
+			@endif
 			<div class="other-action">
-				@if($settings['buttons'])
+				@if(isset($settings['buttons']) && !empty($settings['buttons']))
 					@foreach($settings['buttons'] as $button)
 						@if(isset($button['text']) && !empty($button['text']))
 							{!! @$button['text'] !!}

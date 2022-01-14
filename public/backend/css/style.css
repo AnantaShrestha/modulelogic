@@ -535,8 +535,20 @@
 	line-height: 23px;
 	margin-bottom: 20px;
 }
-.error-content h1{
-	font-size: 32px;
+.error-content h1 {
+	font-size: 29px;
 	color: #fafafa;
+	line-height: 36px;
+}
+.error-content h3 {
+	font-size: 24px;
+	line-height: 33px;
+	margin-top: 10px;
+	color: #fafafa;
+}
+.error-line-no {
+	font-size: 17px !important;
+	color: #8e3a3a !important;
+	margin-left: 20px;
 }
 /** end of error page **/

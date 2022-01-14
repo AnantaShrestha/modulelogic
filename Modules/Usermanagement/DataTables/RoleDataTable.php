@@ -80,6 +80,7 @@ class RoleDataTable{
 	 */
 	public function settings(){
 		return[
+			'searchBox'=>true,
 			'buttons'=>[
 					'create'=>[
 					'title'=>'Create',

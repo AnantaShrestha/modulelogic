@@ -8,7 +8,7 @@
 		</div>
 		<aside>
 			<ul class='parent-navigation'>
-				@if($menus && !empty($menus))
+				@if($menus[0])
 					@foreach($menus[0] as $menu)
 						<li class="navigation-item {{isset($menus[$menu->id]) && count($menus[$menu->id]) ? 'has-children' : ''}}">
 							<div class="navigation-wrapper">

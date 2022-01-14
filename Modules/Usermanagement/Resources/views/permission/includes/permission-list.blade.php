@@ -4,7 +4,7 @@
 @foreach($routeList as $key=>$routes)
 	<div class="permission-item">
 		<div class="permission-title">
-			<h3>{{ucfirst($key)}}</h3>
+			<h3>{{str_replace('-',' ',ucfirst($key))}}</h3>
 		</div>
 		<div class="permission-list">
 			<ul>
@@ -20,7 +20,7 @@
 										{{ucfirst($keyTwo)}}
 										@break
 									@default
-										{{ucfirst($key).' '.ucfirst($keyTwo)}}
+										{{str_replace('-',' ',ucfirst($key)).' '.ucfirst($keyTwo)}}
 								@endswitch
 							</span>
 						</li>

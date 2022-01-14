@@ -69,7 +69,7 @@ class PermissionMiddleWare
     public function routeDefaultPass($request)
     {
         $routeName = $request->route()->getName();
-        $allowRoute = ['admin.dashboard','admin.permission.denied'];
+        $allowRoute = ['admin.dashboard','admin.permission.denied','admin.error'];
         return in_array($routeName, $allowRoute);
     }
 

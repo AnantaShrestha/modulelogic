@@ -79,6 +79,6 @@ class UserController extends Controller
     public function destroy(Request $request)
     {
         $this->userRepo->deleteUser($request);
-        return response()->json(['message'=>'User Deleted Successfully']);
+        return response()->json(['message'=>'User Deleted Successfully','type'=>'warning']);
     }
 }

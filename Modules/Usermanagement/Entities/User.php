@@ -5,6 +5,7 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Modules\Usermanagement\Http\Traits\UserPermissionTrait;
+use Modules\Setting\Entities\Mailsetting;
 class User extends Model implements AuthenticatableContract
 {
     use Authenticatable;
@@ -14,6 +15,11 @@ class User extends Model implements AuthenticatableContract
     protected $hidden  = [
         'password', 'remember_token',
     ];
+
+
+    public function mailSetting(){
+        return $this->hasOne(MailSetting::class,'user_id');
+    }
 
     public function roles()
     {
@@ -30,4 +36,7 @@ class User extends Model implements AuthenticatableContract
         $this->attributes['password'] = bcrypt($value);
     }
     
+
+
+
 }

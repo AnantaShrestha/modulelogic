@@ -21,4 +21,12 @@ Route::prefix(BACKEND_TEMPLATE_PREFIX)->name(BACKEND_TEMPLATE_NAME)->middleware(
 
             Route::post('sort','MenusettingController@sort')->name("menu.sort");
         });
+
+        Route::group(['prefix'=>'mail-setting'],function(){
+            Route::get('/','MailsettingController@index')->name("mailSetting");
+            Route::post('store','MailsettingController@store')->name('mailSetting.store');
+        });
+        Route::group(['prefix'=>'log-activity'],function(){
+            Route::get('/','LogController@index')->name("logActivity");
+        });
 });

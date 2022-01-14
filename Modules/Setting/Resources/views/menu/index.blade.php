@@ -11,8 +11,54 @@
 	<div class="menu-listing-wrapper">
 		<div class="dd" id="menu-sort">
 			<ol class="dd-list">
-				@if($menus)
-					@include('setting::menu.includes.menuListing')
+				@if($menus[0])
+					@foreach($menus[0] as $menu)
+					<li class="dd-item " data-id="{{ $menu->id }}">
+						<div class="dd-handle header-fix " style="">
+							{!! $menu->title !!}
+							<span class="float-right dd-nodrag">
+								<a class="menu-edit-btn" href="{{route('admin.menu.edit',['id'=>$menu->id])}}"><i class="fa fa-edit"></i></a>
+								&nbsp; 
+								<a class="menu-delete-btn" data-id="{{ $menu->id }}" ><i class="fa fa-trash"></i></a>
+							</span>
+						</div>
+						@if (isset($menus[$menu->id]) && count($menus[$menu->id]))
+							<ol class="dd-list">
+								  @foreach ($menus[$menu->id] as $level)
+									  <li class="dd-item" data-id="{{ $level->id }}">
+									    <div class="dd-handle">
+									      {!! $level->title !!}
+									      <span class="float-right dd-nodrag">
+									        <a class="menu-edit-btn" href="{{route('admin.menu.edit',['id'=>$level->id])}}"><i class="fa fa-edit fa-edit"></i></a>
+									        &nbsp; 
+									        <a class="menu-delete-btn" data-id="{{ $level->id }}" class="remove_menu"><i class="fa fa-trash fa-edit"></i></a>
+									      </span>
+									    </div>
+									    @if (isset($menus[$level->id]) && count($menus[$level->id]))
+
+											<ol class="dd-list">
+											  @foreach ($menus[$level->id] as $levelTwo)
+											  <li class="dd-item" data-id="{{ $levelTwo->id }}">
+											    <div class="dd-handle">
+											      {!! $levelTwo->title !!}
+											      <span class="float-right dd-nodrag">
+											        <a class="menu-edit-btn" href="{{route('admin.menu.edit',['id'=>$levelTwo->id])}}"><i class="fa fa-edit fa-edit"></i></a>
+											        &nbsp; 
+											        <a class="menu-delete-btn" data-id="{{ $levelTwo->id }}" class="remove_menu"><i class="fa fa-trash fa-edit"></i></a>
+											      </span>
+											    </div>
+											  </li>
+											  @endforeach
+											</ol>
+
+									    @endif
+									  </li>
+								  @endforeach
+							</ol>
+
+						@endif
+					</li>
+					@endforeach
 				@endif
 			</ol>
 		</div>

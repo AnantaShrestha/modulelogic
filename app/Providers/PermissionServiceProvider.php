@@ -4,11 +4,14 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\PermissionMiddleWare;
+use App\Http\Middleware\LogActivityMiddleware;
 class PermissionServiceProvider extends ServiceProvider
 {
     protected $routeMiddleware = [
       'admin.permission' => PermissionMiddleware::class,
+      'admin.log'=>LogActivityMiddleware::class
     ];
+
     /**
      * Register the service provider.
      *

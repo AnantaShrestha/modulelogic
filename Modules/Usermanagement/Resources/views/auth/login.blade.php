@@ -21,7 +21,7 @@
 							{!! Form::text('username',old('username'),['class'=>'form-control','placeholder'=>'Username','data-validation'=>'required']) !!}
 							@if($errors->has('username'))
 								@foreach($errors->get('username') as $message)
-								<label class="control-label error" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label><br>
+								<label class="control-label error" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label>
 								@endforeach
 							@endif
 						</div>
@@ -30,7 +30,7 @@
 							{!! Form::password('password',['class'=>'form-control','placeholder'=>'Password','data-validation'=>'required']) !!}
 							@if($errors->has('password'))
 								@foreach($errors->get('password') as $message)
-								<label class="control-label error" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label><br>
+								<label class="control-label error" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label>
 								@endforeach
 							@endif
 						</div>

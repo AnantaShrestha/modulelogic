@@ -44,7 +44,7 @@ class RoleController extends Controller
         $this->roleRepo->storeRole($request);
         return redirect()
         ->route('admin.role')
-        ->with(['message','Role Created Successfuly','type'=>'success']);
+        ->with(['message'=>'Role Created Successfuly','type'=>'success']);
     }
 
     /**
@@ -67,7 +67,7 @@ class RoleController extends Controller
     public function update(RoleRequest $request, $id)
     {
         $this->roleRepo->updateRole($request,$id);
-        return redirect()->route('admin.role')->with(['message','Role updated successfully','type'=>'success']);
+        return redirect()->route('admin.role')->with(['message'=>'Role updated successfully','type'=>'success']);
     }
 
     /**
@@ -78,6 +78,6 @@ class RoleController extends Controller
     public function destroy(Request $request)
     {
         $this->roleRepo->deleteRole($request);
-        return response()->json(['message'=>'Role Deleted Successfully']);
+        return response()->json(['message'=>'Role Deleted Successfully','type'=>'warning']);
     }
 }

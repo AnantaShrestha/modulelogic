@@ -1,6 +1,9 @@
-.error{
-	font-size: 13px;
+.error {
+	font-size: 14px !important;
+	line-height: 18px !important;
+	margin-top: 5px;
 	color: red;
+	display: block;
 }
 .login-wrapper {
 	position: fixed;
